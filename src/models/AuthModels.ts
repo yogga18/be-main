@@ -8,6 +8,16 @@ const checkUser = async (username: string) => {
   return dbPool.promise().query(SQLQuery, values);
 };
 
+const checkUserById = async (id: string) => {
+  const SQLQuery =
+    'SELECT id, username, password, status FROM users WHERE id = ?';
+  const values = [id];
+
+  const [rows] = await dbPool.promise().query(SQLQuery, values);
+
+  return rows;
+};
+
 const loginUser = async (
   username: string,
   password: string,
@@ -27,4 +37,4 @@ const updateStatusUser = async (username: string, status: number) => {
   return dbPool.promise().query(SQLQuery, values);
 };
 
-export { checkUser, loginUser, updateStatusUser };
+export { checkUser, checkUserById, loginUser, updateStatusUser };

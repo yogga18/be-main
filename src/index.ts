@@ -7,6 +7,7 @@ import { config as dotenv } from 'dotenv';
 import TodosRoutes from './routes/TodosRoutes';
 import AuthRoutes from './routes/AuthRoutes';
 import NabungRoutes from './routes/NabungRoutes';
+import PencatatanKeuanganRoute from './routes/PencatatanKeuangan/PencatatanKeuanganRoute';
 
 // Routes
 
@@ -35,10 +36,11 @@ class App {
     this.app.use('/api/v1/nabung', NabungRoutes);
     this.app.use('/api/v1/todos', TodosRoutes);
     this.app.use('/api/v1/auth', AuthRoutes);
+    this.app.use('/api/v1/keuangan', PencatatanKeuanganRoute);
   }
 }
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 const app = new App().app;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
