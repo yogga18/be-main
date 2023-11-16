@@ -5,10 +5,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mysql2_1 = __importDefault(require("mysql2"));
 const dbPool = mysql2_1.default.createPool({
-    host: 'localhost',
+    host: '103.127.98.252',
     user: 'root',
-    password: '',
-    database: 'main_db',
+    password: 'Baru2023',
+    database: 'db_main',
     // waitForConnections: true,
     // connectionLimit: 10,
     // maxIdelTime: 10,
