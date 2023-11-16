@@ -8,7 +8,7 @@ const dbPool = mysql2_1.default.createPool({
     host: '103.127.98.252',
     user: 'root',
     password: 'Baru2023',
-    database: 'db_main',
+    database: 'main_db',
     // waitForConnections: true,
     // connectionLimit: 10,
     // maxIdelTime: 10,
