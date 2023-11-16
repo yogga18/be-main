@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateStatusUser = exports.loginUser = exports.checkUser = void 0;
+exports.updateStatusUser = exports.loginUser = exports.checkUserById = exports.checkUser = void 0;
 const database_1 = __importDefault(require("../config/database"));
 const checkUser = (username) => __awaiter(void 0, void 0, void 0, function* () {
     const SQLQuery = 'SELECT id, username, password, status FROM users WHERE username = ?';
@@ -20,6 +20,13 @@ const checkUser = (username) => __awaiter(void 0, void 0, void 0, function* () {
     return database_1.default.promise().query(SQLQuery, values);
 });
 exports.checkUser = checkUser;
+const checkUserById = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const SQLQuery = 'SELECT id, username, password, status FROM users WHERE id = ?';
+    const values = [id];
+    const [rows] = yield database_1.default.promise().query(SQLQuery, values);
+    return rows;
+});
+exports.checkUserById = checkUserById;
 const loginUser = (username, password, status) => __awaiter(void 0, void 0, void 0, function* () {
     const SQLQuery = 'INSERT INTO users (username, password, status) VALUES (?, ?, ?)';
     const values = [username, password, status];

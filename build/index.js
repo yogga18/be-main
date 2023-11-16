@@ -12,6 +12,7 @@ const dotenv_1 = require("dotenv");
 const TodosRoutes_1 = __importDefault(require("./routes/TodosRoutes"));
 const AuthRoutes_1 = __importDefault(require("./routes/AuthRoutes"));
 const NabungRoutes_1 = __importDefault(require("./routes/NabungRoutes"));
+const PencatatanKeuanganRoute_1 = __importDefault(require("./routes/PencatatanKeuangan/PencatatanKeuanganRoute"));
 // Routes
 class App {
     constructor() {
@@ -34,9 +35,10 @@ class App {
         this.app.use('/api/v1/nabung', NabungRoutes_1.default);
         this.app.use('/api/v1/todos', TodosRoutes_1.default);
         this.app.use('/api/v1/auth', AuthRoutes_1.default);
+        this.app.use('/api/v1/keuangan', PencatatanKeuanganRoute_1.default);
     }
 }
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 const app = new App().app;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

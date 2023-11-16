@@ -1,11 +1,12 @@
 import AuthController from '../controllers/AuthController';
+import { rateLimitMiddleware } from '../middlewares/RateLimitMiddleware';
 import BaseRoutes from './BaseRoutes';
 
 class AuthRoutes extends BaseRoutes {
   public routers(): void {
-    this.router.post('/login', AuthController.login);
-    this.router.post('/register', AuthController.register);
-    this.router.post('/logout', AuthController.logout);
+    this.router.post('/login', rateLimitMiddleware, AuthController.login);
+    this.router.post('/register', rateLimitMiddleware, AuthController.register);
+    this.router.post('/logout', rateLimitMiddleware, AuthController.logout);
   }
 }
 
