@@ -20,6 +20,7 @@ class App {
     this.routes();
   }
 
+
   // Plugins
   protected plugins(): void {
     this.app.use(express.urlencoded({ extended: true }));
