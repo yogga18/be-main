@@ -8,8 +8,7 @@ import TodosRoutes from './routes/TodosRoutes';
 import AuthRoutes from './routes/AuthRoutes';
 import NabungRoutes from './routes/NabungRoutes';
 import PencatatanKeuanganRoute from './routes/PencatatanKeuangan/PencatatanKeuanganRoute';
-
-// Routes
+import { swaggerSpec, swaggerui } from './documentation/swaggerConfig';
 
 class App {
   public app: Application;
@@ -20,9 +19,9 @@ class App {
     this.routes();
   }
 
-
   // Plugins
   protected plugins(): void {
+    this.app.use('/api-docs', swaggerui.serve, swaggerui.setup(swaggerSpec));
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
     this.app.use(morgan('dev')); // morgan for logging request

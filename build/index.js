@@ -13,7 +13,7 @@ const TodosRoutes_1 = __importDefault(require("./routes/TodosRoutes"));
 const AuthRoutes_1 = __importDefault(require("./routes/AuthRoutes"));
 const NabungRoutes_1 = __importDefault(require("./routes/NabungRoutes"));
 const PencatatanKeuanganRoute_1 = __importDefault(require("./routes/PencatatanKeuangan/PencatatanKeuanganRoute"));
-// Routes
+const swaggerConfig_1 = require("./documentation/swaggerConfig");
 class App {
     constructor() {
         this.app = (0, express_1.default)();
@@ -22,6 +22,7 @@ class App {
     }
     // Plugins
     plugins() {
+        this.app.use('/api-docs', swaggerConfig_1.swaggerui.serve, swaggerConfig_1.swaggerui.setup(swaggerConfig_1.swaggerSpec));
         this.app.use(express_1.default.urlencoded({ extended: true }));
         this.app.use(express_1.default.json());
         this.app.use((0, morgan_1.default)('dev')); // morgan for logging request
